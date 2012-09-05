@@ -8,3 +8,6 @@ Team Member:
 	Alves-Foss, Jason	alve6656@vandals.uidaho.edu
 	Johnson, Lyle		john2073@vandals.uidaho.edu
 	Nguyen, Van Long	nguy1461@vandals.uidaho.edu
+
+Example:
+/a.out "http://api.twitter.com/1/statuses/user_timeline.json?screen_name=bagder"
