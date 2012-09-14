@@ -1,3 +1,7 @@
+# This program will fetch a tweet from twitter
+# then print the status of that user to standard output
+
+
 require 'json'
 require 'net/http'
 
