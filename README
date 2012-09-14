@@ -10,11 +10,10 @@ Team Member:
 	Nguyen, Van Long	nguy1461@vandals.uidaho.edu
 
 Example:
-/a.out "http://api.twitter.com/1/statuses/user_timeline.json?screen_name=bagder"
-For more information
-https://dev.twitter.com/docs/api/1/get/statuses/user_timeline
+	/a.out "http://api.twitter.com/1/statuses/user_timeline.json?screen_name=bagder"
 
-Compile:
+For more information
+	https://dev.twitter.com/docs/api/1/get/statuses/user_timeline
 
 Group Website:
 	www2.cs.uidaho.edu/~cs383a	
