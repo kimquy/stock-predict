@@ -12,9 +12,11 @@ json = JSON content
 
 puts ""
 
+myfile = File.open('tweets.txt', 'w+')
+
 json.each { |j|
 	j.each { |key, value|
-		puts "#{value} \n\n" if key == "text"
+		myfile.write(value) if key == "text"	
 		
 	}
 }
