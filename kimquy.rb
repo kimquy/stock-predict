@@ -10,9 +10,8 @@ uri = URI 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=bagd
 content = Net::HTTP.get(uri)
 
 json = JSON content
- */
 
-myfile = File.open("tweets.txt")
+myfile = File.open("tweets.txt", 'w+')
 
 json.each { |j|
 	j.each { |key, value|
