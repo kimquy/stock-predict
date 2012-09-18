@@ -10,8 +10,10 @@ content = Net::HTTP.get(uri)
 
 json = JSON content
 
+myfile = File.open("tweets.txt")
+
 json.each { |j|
 	j.each { |key, value|
-		puts value if key == "text"
+		myfile.write(value) if key == "text"
 	}
 }
