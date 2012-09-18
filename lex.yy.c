@@ -53,6 +53,7 @@ typedef int flex_int32_t;
 typedef unsigned char flex_uint8_t; 
 typedef unsigned short int flex_uint16_t;
 typedef unsigned int flex_uint32_t;
+#endif /* ! C99 */
 
 /* Limits of integral types. */
 #ifndef INT8_MIN
@@ -82,8 +83,6 @@ typedef unsigned int flex_uint32_t;
 #ifndef UINT32_MAX
 #define UINT32_MAX             (4294967295U)
 #endif
-
-#endif /* ! C99 */
 
 #endif /* ! FLEXINT_H */
 
@@ -141,15 +140,7 @@ typedef unsigned int flex_uint32_t;
 
 /* Size of default input buffer. */
 #ifndef YY_BUF_SIZE
-#ifdef __ia64__
-/* On IA-64, the buffer size is 16k, not 8k.
- * Moreover, YY_BUF_SIZE is 2*YY_READ_BUF_SIZE in the general case.
- * Ditto for the __ia64__ case accordingly.
- */
-#define YY_BUF_SIZE 32768
-#else
 #define YY_BUF_SIZE 16384
-#endif /* __ia64__ */
 #endif
 
 /* The state buf must be large enough to hold one state per character in the main buffer.
@@ -611,8 +602,8 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "j2html.l"
-#line 3 "j2html.l"
+#line 1 "lexFile.l"
+#line 3 "lexFile.l"
 /*
     Lyle Johnson
     lexParser.l
@@ -628,7 +619,7 @@ int yyntokens;		/* number of tokens in source file */
 int yynallocated=0;	/* size of dynamic array */
 int newlineflag;	/* did a newline occur between last token and this? */
 
-#line 632 "lex.yy.c"
+#line 623 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -709,12 +700,7 @@ static int input (void );
 
 /* Amount of stuff to slurp up with each read. */
 #ifndef YY_READ_BUF_SIZE
-#ifdef __ia64__
-/* On IA-64, the buffer size is 16k, not 8k */
-#define YY_READ_BUF_SIZE 16384
-#else
 #define YY_READ_BUF_SIZE 8192
-#endif /* __ia64__ */
 #endif
 
 /* Copy whatever the last rule matched to the standard output. */
@@ -722,7 +708,7 @@ static int input (void );
 /* This used to be an fputs(), but since the string might contain NUL's,
  * we now use fwrite().
  */
-#define ECHO do { if (fwrite( yytext, yyleng, 1, yyout )) {} } while (0)
+#define ECHO fwrite( yytext, yyleng, 1, yyout )
 #endif
 
 /* Gets input and stuffs it into "buf".  number of characters read, or YY_NULL,
@@ -733,7 +719,7 @@ static int input (void );
 	if ( YY_CURRENT_BUFFER_LVALUE->yy_is_interactive ) \
 		{ \
 		int c = '*'; \
-		size_t n; \
+		yy_size_t n; \
 		for ( n = 0; n < max_size && \
 			     (c = getc( yyin )) != EOF && c != '\n'; ++n ) \
 			buf[n] = (char) c; \
@@ -815,10 +801,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 20 "j2html.l"
+#line 20 "lexFile.l"
 
 
-#line 822 "lex.yy.c"
+#line 808 "lex.yy.c"
 
 	if ( !(yy_init) )
 		{
@@ -892,7 +878,7 @@ yy_find_action:
 
 		if ( yy_act != YY_END_OF_BUFFER && yy_rule_can_match_eol[yy_act] )
 			{
-			int yyl;
+			yy_size_t yyl;
 			for ( yyl = 0; yyl < yyleng; ++yyl )
 				if ( yytext[yyl] == '\n' )
 					   
@@ -913,281 +899,281 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 22 "j2html.l"
+#line 22 "lexFile.l"
 { printf("<PRE> </PRE>"); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 23 "j2html.l"
+#line 23 "lexFile.l"
 { printf(" ");  }
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 24 "j2html.l"
+#line 24 "lexFile.l"
 { newlineflag++; printf("<BR></BR>"); }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 25 "j2html.l"
+#line 25 "lexFile.l"
 { printf("<font color = \"red\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 28 "j2html.l"
+#line 28 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 29 "j2html.l"
+#line 29 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 30 "j2html.l"
+#line 30 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 31 "j2html.l"
+#line 31 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 32 "j2html.l"
+#line 32 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 33 "j2html.l"
+#line 33 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 34 "j2html.l"
+#line 34 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 35 "j2html.l"
+#line 35 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 36 "j2html.l"
+#line 36 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 37 "j2html.l"
+#line 37 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 38 "j2html.l"
+#line 38 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 39 "j2html.l"
+#line 39 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 40 "j2html.l"
+#line 40 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); } 
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 41 "j2html.l"
+#line 41 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 42 "j2html.l"
+#line 42 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 43 "j2html.l"
+#line 43 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 44 "j2html.l"
+#line 44 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 45 "j2html.l"
+#line 45 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 46 "j2html.l"
+#line 46 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 47 "j2html.l"
+#line 47 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 48 "j2html.l"
+#line 48 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 49 "j2html.l"
+#line 49 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 50 "j2html.l"
+#line 50 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 51 "j2html.l"
+#line 51 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 52 "j2html.l"
+#line 52 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); } 
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 53 "j2html.l"
+#line 53 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 54 "j2html.l"
+#line 54 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 55 "j2html.l"
+#line 55 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 56 "j2html.l"
+#line 56 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 57 "j2html.l"
+#line 57 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 58 "j2html.l"
+#line 58 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 59 "j2html.l"
+#line 59 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 60 "j2html.l"
+#line 60 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 61 "j2html.l"
+#line 61 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 62 "j2html.l"
+#line 62 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 63 "j2html.l"
+#line 63 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 64 "j2html.l"
+#line 64 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 65 "j2html.l"
+#line 65 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 66 "j2html.l"
+#line 66 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 67 "j2html.l"
+#line 67 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 68 "j2html.l"
+#line 68 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 69 "j2html.l"
+#line 69 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 70 "j2html.l"
+#line 70 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 71 "j2html.l"
+#line 71 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 72 "j2html.l"
+#line 72 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 73 "j2html.l"
+#line 73 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 74 "j2html.l"
+#line 74 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 75 "j2html.l"
+#line 75 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 76 "j2html.l"
+#line 76 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 77 "j2html.l"
+#line 77 "lexFile.l"
 { printf("<font color = \"blue\"> %s< /font>", yytext ); }
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 79 "j2html.l"
+#line 79 "lexFile.l"
 ECHO;
 	YY_BREAK
-#line 1191 "lex.yy.c"
+#line 1177 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1954,8 +1940,8 @@ YY_BUFFER_STATE yy_scan_string (yyconst char * yystr )
 
 /** Setup the input buffer state to scan the given bytes. The next call to yylex() will
  * scan from a @e copy of @a bytes.
- * @param yybytes the byte buffer to scan
- * @param _yybytes_len the number of bytes in the buffer pointed to by @a bytes.
+ * @param bytes the byte buffer to scan
+ * @param len the number of bytes in the buffer pointed to by @a bytes.
  * 
  * @return the newly allocated buffer state object.
  */
@@ -2197,7 +2183,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 79 "j2html.l"
+#line 79 "lexFile.l"
 
 
 
@@ -2212,3 +2198,4 @@ int main()
 g++ lex.yy.c -ll
 http://aquamentus.com/tut_lexyacc.html
 */
+
