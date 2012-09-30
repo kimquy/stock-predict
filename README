@@ -3,14 +3,14 @@ Software Engineering
 Fall 2012
 Team: KimQuy
 
+Project Info:
+	Design software that can predict the stock market based on social media, such as Twitter.
+
 Team Member:
 	Allen, Craig 		alle7522@vandals.uidaho.edu
 	Alves-Foss, Jason	alve6656@vandals.uidaho.edu
 	Johnson, Lyle		john2073@vandals.uidaho.edu
 	Nguyen, Van Long	nguy1461@vandals.uidaho.edu
-
-Example:
-	/a.out "http://api.twitter.com/1/statuses/user_timeline.json?screen_name=bagder"
 
 For more information
 	https://dev.twitter.com/docs/api/1/get/statuses/user_timeline
