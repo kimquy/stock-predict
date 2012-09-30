@@ -6,15 +6,21 @@ require 'rubygems'
 require 'json'
 require 'net/http'
 
+<<<<<<< HEAD
 uri = URI 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=google&&count=10'
+=======
+uri = URI 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=bagder&&count=1'
+>>>>>>> 01f5f6f43952b9394295b5c4710bea20e599460c
 content = Net::HTTP.get(uri)
 
 json = JSON content
 
-myfile = File.open("tweets.txt", 'w+')
-
 json.each { |j|
 	j.each { |key, value|
+<<<<<<< HEAD
 		myfile.write("#{value} \n") if key == "text"
+=======
+		puts value if key == "text"
+>>>>>>> 01f5f6f43952b9394295b5c4710bea20e599460c
 	}
 }
