@@ -14,6 +14,7 @@
 struct token *yytokens;	/* a global array of all tokens */
 int yyntokens;		/* number of tokens in source file */
 int yynallocated=0;	/* size of dynamic array */
+
 int newlineflag;	/* did a newline occur between last token and this? */
 int newFlag;
 int introducingFlag;
@@ -21,20 +22,16 @@ int updateFlag;
 int betterFlag;
 int greaterFlag;
 int improvedFlag;
-
-
 %}
 
 %%
 
 @				{ printf("\n\n"); }
-new				{ newFlag++; }
+new				{ newFlag++; printf("%s", yytext); }
 introducing		{ introducingFlag++; }
 update			{ updateFlag++; }
 better			{ betterFlag++; }
 improved		{ improvedFlag++; }
-
-[\n]			{ newlineflag++; printf("\n"); }
 
 %%
 
@@ -45,10 +42,11 @@ int yywrap(void)
 
 int main( int argc, char *argv[] )
 {
+	newFlag = 0;
 	yyin = fopen( argv[1], "r" );
 	yylex();
-	return 0;
-	printf("\n%d\n", newFlag );
+	yywrap();
+	printf("\n Number of New Flags: %d\n", newFlag );
 	fclose( yyin );
 }
 
