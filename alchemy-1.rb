@@ -16,7 +16,7 @@ infile = File.new("tweets.txt", "r")
 
 infile.each_line { |tweet|	# store each line in infile in the variable tweet, then do the following
 
-	puts tweet	# comment this out to just see the numbers
+	#puts tweet	# comment this out to just see the numbers
 
 	result = alchemyObj.TextGetTextSentiment( tweet, "json" )	# Get the sentiment of the file tweet in json form
 
@@ -28,7 +28,7 @@ infile.each_line { |tweet|	# store each line in infile in the variable tweet, th
 		puts sentiment["score"]		# otherwise, print the score
 	end
 
-	puts "\n"	#a new line, for neat formatting
+	#puts "\n"	#a new line, for neat formatting
 
 
 }
