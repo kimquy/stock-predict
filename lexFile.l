@@ -15,23 +15,34 @@ struct token *yytokens;	/* a global array of all tokens */
 int yyntokens;		/* number of tokens in source file */
 int yynallocated=0;	/* size of dynamic array */
 
-int newlineflag;	/* did a newline occur between last token and this? */
+/* Any flags that we need to tokenize. Will be implemented with bison 
+** in the future. We want to match any buzzwords, keywords, anything 
+** with very positive or negative feedback. 
+*/
+int newlineflag;	
 int newFlag;
 int introducingFlag;
 int updateFlag;
 int betterFlag;
 int greaterFlag;
 int improvedFlag;
+int refFlag;
+int hashFlag;
+
 %}
 
 %%
 
-@				{ printf("\n\n"); }
-new				{ newFlag++; printf("%s", yytext); }
-introducing		{ introducingFlag++; }
-update			{ updateFlag++; }
-better			{ betterFlag++; }
-improved		{ improvedFlag++; }
+#				{ hashFlag++; 
+					printf( "%s", yytext );
+					}
+@				{ refFlag++; printf( "%s", yytext ); }
+new				{ newFlag++; printf( "%s", yytext ); }
+introducing		{ introducingFlag++; printf( "%s", yytext ); }
+update			{ updateFlag++; printf( "%s", yytext ); }
+better			{ betterFlag++; printf( "%s", yytext ); }
+improved		{ improvedFlag++; printf( "%s", yytext ); }
+.				{;}
 
 %%
 
@@ -42,11 +53,26 @@ int yywrap(void)
 
 int main( int argc, char *argv[] )
 {
+	hashFlag = 0;
 	newFlag = 0;
+	introducingFlag = 0;
+	updateFlag = 0;
+	betterFlag = 0;
+	improvedFlag = 0;
+	refFlag = 0;
+	
 	yyin = fopen( argv[1], "r" );
+	
 	yylex();
 	yywrap();
-	printf("\n Number of New Flags: %d\n", newFlag );
+	
+	printf("\n Number of 'Reference' Flags: %d", refFlag );
+	printf("\n Number of 'New' Flags: %d", newFlag );
+	printf("\n Number of 'Introducing' Flags: %d", introducingFlag );
+	printf("\n Number of 'Update' Flags: %d", updateFlag );
+	printf("\n Number of 'Better' Flags: %d", betterFlag );
+	printf("\n Number of 'Improved' Flags: %d\n\n", improvedFlag );
+	
 	fclose( yyin );
 }
 
