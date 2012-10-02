@@ -4,6 +4,8 @@
 *   Lyle Johnson - Kimquy Stock Predict
 *   lexParser.l
 *	Compiler note at the bottom
+*	
+*	Next Step: implement website sentiment analysis thru alchemy.
 */
 
 #include <string.h>
@@ -16,7 +18,7 @@ int yyntokens;		/* number of tokens in source file */
 int yynallocated=0;	/* size of dynamic array */
 
 /* Any flags that we need to tokenize. Will be implemented with bison 
-** in the future. We want to match any buzzwords, keywords, anything 
+** in the future (?). We want to match any buzzwords, keywords, anything 
 ** with very positive or negative feedback. 
 */
 int newlineflag;	
@@ -28,6 +30,8 @@ int greaterFlag;
 int improvedFlag;
 int refFlag;
 int hashFlag;
+int productFlag;
+int discoverFlag;
 
 %}
 
@@ -41,8 +45,10 @@ new				{ newFlag++; printf( "%s", yytext ); }
 introducing		{ introducingFlag++; printf( "%s", yytext ); }
 update			{ updateFlag++; printf( "%s", yytext ); }
 better			{ betterFlag++; printf( "%s", yytext ); }
-improved		{ improvedFlag++; printf( "%s", yytext ); }
-.				{;}
+improved		{ improvedFlag++; printf( "%s", yytext ); } 
+product			{ productFlag++; printf( "%s", yytext ); }
+discover		{ discoverFlag++; printf( "%s", yytext ); }
+.				{; //remove this line if you want it to print all tweets out}
 
 %%
 
@@ -60,6 +66,8 @@ int main( int argc, char *argv[] )
 	betterFlag = 0;
 	improvedFlag = 0;
 	refFlag = 0;
+	productFlag = 0;
+	discoverFlag = 0;
 	
 	yyin = fopen( argv[1], "r" );
 	

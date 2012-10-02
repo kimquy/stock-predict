@@ -5,7 +5,7 @@
 # Feel free to change whatever you need, it will be neat to see the 
 # sentiment analysis. 
 
-require "alchemyAPI.rb"
+require_relative "AlchemyAPI.rb"
 require 'json'
 
 alchemyObj = AlchemyAPI.new();
