@@ -20,6 +20,8 @@ int yynallocated=0;	/* size of dynamic array */
 /* Any flags that we need to tokenize. Will be implemented with bison 
 ** in the future (?). We want to match any buzzwords, keywords, anything 
 ** with very positive or negative feedback. 
+**
+**	(http|https)://[a-zA-Z]?\.co/[a-zA-Z0-9]*
 */
 int newlineflag;	
 int newFlag;
@@ -32,23 +34,25 @@ int refFlag;
 int hashFlag;
 int productFlag;
 int discoverFlag;
+int urlFlag;
 
 %}
 
 %%
 
-#				{ hashFlag++; 
-					printf( "%s", yytext );
-					}
-@				{ refFlag++; printf( "%s", yytext ); }
-new				{ newFlag++; printf( "%s", yytext ); }
-introducing		{ introducingFlag++; printf( "%s", yytext ); }
-update			{ updateFlag++; printf( "%s", yytext ); }
-better			{ betterFlag++; printf( "%s", yytext ); }
-improved		{ improvedFlag++; printf( "%s", yytext ); } 
-product			{ productFlag++; printf( "%s", yytext ); }
-discover		{ discoverFlag++; printf( "%s", yytext ); }
-.				{; //remove this line if you want it to print all tweets out}
+"http://t.co/"[a-zA-Z0-9]*		{ urlFlag++; printf("%s", yytext ); }
+#						{ hashFlag++; 
+							printf( "%s", yytext );
+							}
+@						{ refFlag++; printf( "%s", yytext ); }
+new|newest|newer		{ newFlag++; printf( "%s", yytext ); }
+introducing				{ introducingFlag++; printf( "%s", yytext ); }
+update|updates			{ updateFlag++; printf( "%s", yytext ); }
+better|best				{ betterFlag++; printf( "%s", yytext ); }
+improved|improve		{ improvedFlag++; printf( "%s", yytext ); } 
+product|products		{ productFlag++; printf( "%s", yytext ); }
+discover|discovering|discovered	{ discoverFlag++; printf( "%s", yytext ); }
+.				{;}
 
 %%
 
@@ -68,6 +72,7 @@ int main( int argc, char *argv[] )
 	refFlag = 0;
 	productFlag = 0;
 	discoverFlag = 0;
+	urlFlag = 0;
 	
 	yyin = fopen( argv[1], "r" );
 	
@@ -79,7 +84,8 @@ int main( int argc, char *argv[] )
 	printf("\n Number of 'Introducing' Flags: %d", introducingFlag );
 	printf("\n Number of 'Update' Flags: %d", updateFlag );
 	printf("\n Number of 'Better' Flags: %d", betterFlag );
-	printf("\n Number of 'Improved' Flags: %d\n\n", improvedFlag );
+	printf("\n Number of 'Improved' Flags: %d\n", improvedFlag );
+	printf("\n Number of 'URL' Flags: %d \n\n", urlFlag);
 	
 	fclose( yyin );
 }
